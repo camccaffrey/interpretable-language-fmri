@@ -2,7 +2,7 @@
 
 This project investigates how well modern language models can predict and explain human brain activity during natural language processing, as measured by fMRI. Specifically, we develop voxel-level encoding models that map linguistic input to BOLD (Blood Oxygen Level Dependent) signals recorded from participants listening to naturalistic spoken narratives.
 
-The project was completed as part of a three-part lab series focused on neural encoding, embedding models, and interpretability. Across the three stages, we used off-the-shelf language embeddings, trained custom encoders, and fine-tuned transformer models, ultimately applying SHAP and LIME to interpret model behavior.
+The project was completed as part of a three-part lab series from [UC Berkeley's STAT 214](https://graduate.catalog.berkeley.edu/courses/1654771) focused on neural encoding, embedding models, and interpretability. Across the three stages, we used off-the-shelf language embeddings, trained custom encoders, and fine-tuned transformer models, ultimately applying SHAP and LIME to interpret model behavior.
 
 The [full final report](https://github.com/camccaffrey/interpretable-language-fmri/blob/main/reports/part-3.pdf) represents our group’s collective work. **My individual contributions to the report are isolated [here](https://github.com/camccaffrey/interpretable-language-fmri/blob/main/my-contributions/report.pdf)**, with all supporting materials and documentation in the `my-contributions` directory.
 
