@@ -1,0 +1,22 @@
+We have all agreed on these attributions:
+
+Ashley Zhang worked on:
+- Designing and training thr BERT model
+- Coding the BERT model except the loss function and masking
+- Hyperparameter tuning of the BERT model
+- Extract chunck embeddings with BERT
+- Writing the corresponding sections in the report, plus the introduction and conclusion
+- Final review of the report
+
+Kishore Chidambaram worked on:
+- Train the ridge regression and hyperparameter tuning
+- Post-hoc analysis of the ridge regression
+- Stability analysis of the ridge regression
+- Writing the corresponding sections in the report
+
+Connor McCaffrey worked on:
+- Coding the loss function for the BERT model
+
+Rawi Baransy worked on:
+- Coding the masking function for the BERT model
+- Helping the modeling process
