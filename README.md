@@ -24,13 +24,13 @@ These voxel-level time series capture neural activity during naturalistic langua
 
 ### Project Parts
 
-#### [Part 1: Pre-trained Embeddings](https://github.com/camccaffrey/interpretable-language-fmri/blob/main/reports/part-1.pdf) 
+#### [Part 1: Pre-trained Embeddings](https://github.com/camccaffrey/interpretable-language-fmri/tree/main/parts/part-1)
 We used off-the-shelf word embedding methods—Bag-of-Words, Word2Vec, and GloVe—to generate vector representations of words in naturalistic stories. These embeddings were aligned with fMRI data and used as input to ridge regression models to predict voxel-level BOLD responses.
 
-#### [Part 2: Custom Encoder Training](https://github.com/camccaffrey/interpretable-language-fmri/blob/main/reports/part-2.pdf)  
+#### [Part 2: Custom Encoder Training](https://github.com/camccaffrey/interpretable-language-fmri/tree/main/parts/part-2)  
 We pre-trained a transformer-based encoder using a masked language modeling objective on the story transcripts. This provided contextualized embeddings tailored to the narrative data. These embeddings were then evaluated against those from Part 1 using the same ridge regression framework.
 
-#### [Part 3: Fine-tuning and Interpretability](https://github.com/camccaffrey/interpretable-language-fmri/blob/main/reports/part-3.pdf)
+#### [Part 3: Fine-tuning and Interpretability](https://github.com/camccaffrey/interpretable-language-fmri/tree/main/parts/part-3)
 We fine-tuned a pre-trained BERT model on the fMRI prediction task and explored parameter-efficient fine-tuning via LoRA. We then applied SHAP and LIME to interpret which words contributed most to the predictions for voxels with high model performance. This analysis aimed to link linguistic features to neural signals in an interpretable way.
 
 
