@@ -57,12 +57,12 @@ In addition to predictive performance, this lab introduces an interpretability d
 
 
 \section{EDA}
-In this section, we will conduct a primitive EDA on the dataset to gain a basic understanding of the data and its structure. The dataset consists of fMRI signals from two subjects, each listening to 101 stories. We divide the data into training/validation and test sets, with 75\% of the stories (75 stories) used for training and validation, and 25\% (26 stories) reserved for testing. The test data is reserved until the Test Performance section, and the EDA, embedding and modeling parts are conducted on the training/validation data only. 
 
-In this section, we conducted the EDA on the stories and fMRI signals separately.
+In this section, we perform a preliminary exploratory data analysis (EDA) to develop a basic understanding of the dataset. The data consists of fMRI recordings from two subjects, each listening to 101 stories. We divide the dataset into training/validation and test sets: 75 stories (75\%) are used for training and validation, while the remaining 26 stories (25\%) are reserved for testing. All EDA, embedding, and modeling are performed solely on training/validation data.
 
 \subsection{Stories}
-The stories are stored in a "list of words" format, where each story is represented as a list of words, without punctuation or spaces. Figure \ref{fig:story_length} shows the distribution of story lengths, measured by the number of words, across the 75 stories in the training/validation set. The histogram indicates a roughly unimodal distribution with a slight right skew. The majority of stories cluster around the central tendency, with the mean length being 1893 words and the same median length. The similarity between the mean and median confirms the relatively mild skew. The shortest story contains 697 words, while the longest contains 3476 words, showing a considerable range in the duration of the stimuli presented.
+
+The stories are stored in a "list of words" format, with each story represented as a list of individual words stripped of punctuation and spacing. Figure~\ref{fig:story_length} shows the distribution of story lengths, measured by word count, for the 75 stories in the training/validation set. The histogram reveals a roughly unimodal distribution with a slight right skew. Most stories cluster around the center, with both the mean and median at 1,893 words. This similarity suggests the skew is relatively mild. Story lengths range from 697 to 3,476 words, indicating substantial variation in stimulus duration.
 
 \begin{figure}[ht]
     \centering
@@ -71,16 +71,17 @@ The stories are stored in a "list of words" format, where each story is represen
     \label{fig:story_length}
 \end{figure}
 
-The following shows a selected piece of one of the stories. The punctuations are added by us as it is not in the original text.
+The excerpt below is a sample passage from one of the stories, with punctuation added for readability, as it is not present in the original data.
 
 \begin{quotation}
     "My story begins, I am driving my uh silver station Volvo uh from Brooklyn to my mother's house in Rosedale, Queens, on a hot mid-afternoon August day in two thousand and three. My mother uh is a widow. Uh, my father has passed away from lung cancer fifteen years before, nineteen eighty-eight, and she has not resumed dating. She has sworn off men in no uncertain terms. She has told me that, "I am never, ever going to wash another pair of men's underwear again. I am finished with the species. I'm done."
 \end{quotation}
 
-The story is a narrative piece, and the text is rich in detail and context. The language is conversational, with a mix of personal anecdotes and reflections. The use of "uh" indicates a speech pattern that is common in spoken language. That implies the corpus is informal and could differ from more formal ones that commonly used in NLP-related tasks.
+The story is a narrative piece, rich in detail and context. The language is conversational, featuring personal anecdotes and reflections. The presence of filler words like "uh" reflects natural speech patterns, suggesting that the corpus is informal and may differ from the more formal text typically used in NLP tasks.
+
 
 \subsection{fMRI Signals}
-The fMRI signal data captures the brain's response, measured via the Blood-Oxygen-Level-Dependent (BOLD) signal, as subjects listened to the stories. For each of the 75 stories comprising the training/validation set for a given subject, the data is organized into a two-dimensional numerical array. Each row in this array represents the brain activity across all measured voxels at a specific Time of Repetition (TR), which is the sampling interval of the fMRI scanner. Each column corresponds to a single voxel, with 94251 voxels for Subject 2 or 95556 for Subject 3, recorded per subject. Consequently, the dimensions of these arrays are \(T \times V\), where \(V\) is constant, and \(T\) (the number of TRs) varies from story to story, reflecting the differing lengths of the narratives; indeed, as shown in Figure \ref{fig:word_count}, there is a strong positive correlation between the number of words in a story and the duration of its corresponding fMRI recording in TRs.
+The fMRI signal data capture the brain's response, measured via the Blood-Oxygen-Level-Dependent (BOLD) signal, as subjects listened to the stories. For each of the 75 stories comprising the training/validation set for a given subject, the data is organized into a two-dimensional numerical array. Each row in this array represents the brain activity across all measured voxels at a specific Time of Repetition (TR), which is the sampling interval of the fMRI scanner. Each column corresponds to a single voxel, with $94,251$ voxels for Subject 2 or $95,556$ for Subject 3, recorded per subject. Consequently, the dimensions of these arrays are \(T \times V\), where \(V\) is constant, and \(T\) (the number of TRs) varies from story to story, reflecting the differing lengths of the narratives; indeed, as shown in Figure \ref{fig:word_count}, there is a strong positive correlation between the number of words in a story and the duration of its corresponding fMRI recording in TRs.
 
 \begin{figure}[ht]
     \centering
@@ -89,7 +90,8 @@ The fMRI signal data captures the brain's response, measured via the Blood-Oxyge
     \label{fig:word_count}
 \end{figure}
 
-To understand the basic characteristics of the BOLD signal itself, we examined the distribution of raw signal values across all voxels and time points within the training/validation set. Since plotting every single reading is impractical, we randomly sampled 10,000 individual signal values from the training data for each subject. Figure \ref{fig:fmri_signal} displays the resulting histograms for these sampled raw BOLD values for Subject 2 and Subject 3. Both distributions appear highly similar, exhibiting an unimodal, approximately Gaussian form centered very close to zero. The spread or variance of the raw signals also seems comparable between the two subjects.
+To understand the basic characteristics of the BOLD signal, we analyzed the distribution of raw signal values across all voxels and time points in the training/validation set. Because plotting every individual reading is impractical, we randomly sampled 10,000 raw signal values from the training data for each subject. Figure~\ref{fig:fmri_signal} shows histograms of these sampled values for Subject 2 and Subject 3. The distributions are highly similar: both are unimodal, approximately Gaussian in shape, and centered near zero. The spread (or variance) of the raw signals also appears comparable across subjects.
+
 
 \begin{figure}[ht]
     \centering
